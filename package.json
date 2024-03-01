@@ -1,0 +1,35 @@
+{
+  "name": "hyas-hugo-v0.123.6-global",
+  "version": "0.0.0",
+  "description": "Hyas",
+  "author": "Hyas",
+  "license": "MIT",
+  "scripts": {
+    "lint": "npm run lint:scripts && npm run lint:styles && npm run lint:markdown",
+    "lint:scripts": "eslint --cache config",
+    "lint:styles": "stylelint --cache \"assets/scss/**/*.{css,sass,scss}\"",
+    "lint:markdown": "markdownlint-cli2 \"*.md\" \"content/**/*.md\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "preview": "http-server --gzip --brotli --ext=html --cors",
+    "clean": "npm run clean:build && npm run clean:lint && npm run clean:install",
+    "clean:build": "shx rm -rf public resources .hugo_build.lock",
+    "clean:install": "shx rm -rf node_modules package-lock.json yarn.lock pnpm-lock.yaml",
+    "clean:lint": "shx rm -rf .eslintcache .stylelintcache",
+    "preinfo": "npm version",
+    "info": "npm list"
+  },
+  "dependencies": {
+    "gethyas": "^2.2.2"
+  },
+  "devDependencies": {
+    "shx": "^0.3.4"
+  },
+  "overrides": {
+    "semver": "^7.5.4"
+  },
+  "engines": {
+    "node": ">=18.14.1",
+    "pnpm": ">=8.10.0"
+  },
+  "packageManager": "pnpm@8.12.0"
+}
